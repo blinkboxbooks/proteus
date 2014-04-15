@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+$LOAD_PATH << File.join(__dir__, "../lib")
+require "proteus"
+
+owner, repo = $1, $2 if ARGV[0] =~ %r{^([a-z][a-z-]*)/([a-z][a-z-]*)$}i
+
+unless owner && repo
+  $stderr.puts "Usage: proteus owner/repo [PR-number]"
+  exit 1
+end
+
+unless ENV['GITHUB_TOKEN'] && ENV['GITHUB_TOKEN'].length == 40
+  $stderr.puts "The GITHUB_TOKEN environment variable is not a valid Github OAuth token"
+  exit 2
+end
+
+begin
+  pr = Proteus::Build.new(owner, repo, ARGV[1])
+
+  pr.retrieve_info
+  pr.validate_repo
+  pr.calculate_new_version
+
+  if pr.comment_only?
+    pr.comment_with_bump_type
+  else
+    pr.update_changelog
+    pr.commit_changes
+  end
+rescue => e
+  $stderr.puts e.message
+  exit 1
+end
