@@ -29,6 +29,5 @@ begin
   end
 rescue => e
   $stderr.puts e.message
-  raise e
   exit 1
 end
