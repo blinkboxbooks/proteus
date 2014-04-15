@@ -79,7 +79,7 @@ The pull request description didn't contain any keywords indicating what kind of
 | Minor       | new feature                      |
 | Major       | breaking change                  |
 
-![#FAIL](http://media.giphy.com/media/13QiUx90uD86Ji/giphy.gif)
+![#FAIL](http://media.giphy.com/media/njYrp176NQsHS/giphy.gif)
 ERROR
 
         post_to_pull_request(error_text) unless @update_changelog
