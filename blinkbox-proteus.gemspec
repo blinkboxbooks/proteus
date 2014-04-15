@@ -3,7 +3,7 @@ lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
-  spec.name          = "proteus"
+  spec.name          = "blinkbox-proteus"
   spec.version       = File.read("VERSION") rescue "0.0.0"
   spec.authors       = ["JP Hastings-Spital"]
   spec.email         = ["jphastings@blinkbox.com"]
