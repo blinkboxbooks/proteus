@@ -47,7 +47,7 @@ module Proteus
     def validate_repo
       unless banned_files_in_diff.empty?
         error_text = "Please do not include any changes to CHANGELOG.md or VERSION in your pull requests."
-        post_to_pull_request(error_text)
+        post_to_pull_request(error_text + fail)
         raise error_text
       end
 
@@ -78,11 +78,9 @@ The pull request description didn't contain any keywords indicating what kind of
 | Patch       | bug fix, bugfix, bugfixes, patch |
 | Minor       | new feature                      |
 | Major       | breaking change                  |
-
-![#FAIL](http://media.giphy.com/media/njYrp176NQsHS/giphy.gif)
 ERROR
 
-        post_to_pull_request(error_text) unless @update_changelog
+        post_to_pull_request(error_text + fail) unless @update_changelog
         raise error_text
       end
 
@@ -146,7 +144,15 @@ ERROR
     end
 
     def banned_files_in_diff
-      `git diff origin/master --name-only | grep "^\(CHANGELOG.md\|VERSION\)$"`
+      # The most recent commit should be the merge between the last pull request commit and the upstream master
+      # as we can't be 100% sure what order the parents will be in, we need to take the last two commits and compare.
+      parents = `git log --pretty=%P -1`.split(" ")
+      last_pr_commit = `git log --pretty=%H -2`.split("\n").last
+      raise "The most recent commit is not a merge, the build process is not behaving as expected" unless parents.length == 2
+      last_upstream_commit = parents - [last_pr_commit]
+      raise "Could not identify the last upstream commit from the git log." unless last_upstream_commit.length == 1
+      files = `git diff #{last_upstream_commit.first} --name-only`.split("\n")
+      files.grep(/^(CHANGELOG\.md|VERSION)$/)
     end
 
     def retrieve_from_github(uri)
@@ -171,6 +177,21 @@ ERROR
         message = JSON.parse(res.body)["message"] rescue res.body
         raise "Github responded with a #{res.code}: #{message} (#{uri.to_s})"
       end
+    end
+
+    FAIL_GIFS = %w{
+      http://media.giphy.com/media/njYrp176NQsHS/giphy.gif
+      http://media0.giphy.com/media/aUrv4ohm0IPNS/giphy.gif
+      http://media.giphy.com/media/bR4fRofHcFVy8/giphy.gif
+      http://media.giphy.com/media/QMJhOD0obsiPe/giphy.gif
+      http://media.giphy.com/media/14aUO0Mf7dWDXW/giphy.gif
+      http://media.giphy.com/media/rXMkGj2Z3iKGs/giphy.gif
+      http://media1.giphy.com/media/YzZ29cRg4hkrK/giphy.gif
+      http://media1.giphy.com/media/gLrWjmW6XljZC/giphy.gif
+      http://media.giphy.com/media/1014RBn4HVSTK/giphy.gif
+    }
+    def fail
+      "\n\n![#FAIL](#{FAIL_GIFS.sample})"
     end
   end
 end
