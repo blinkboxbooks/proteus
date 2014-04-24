@@ -2,7 +2,7 @@
 $LOAD_PATH << File.join(__dir__, "../lib")
 require "proteus"
 
-owner, repo = $1, $2 if ARGV[0] =~ %r{^([a-z][a-z-]*)/([a-z][a-z-]*)$}i
+owner, repo = $1, $2 if ARGV[0] =~ %r{^([\w-]+)/([\w-]+)$}
 
 unless owner && repo
   $stderr.puts "Usage: proteus owner/repo [PR-number]"
