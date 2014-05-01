@@ -1,5 +1,14 @@
 # Change log
 
+## 0.1.2 ([#5](https://git.mobcastdev.com/Deployment/proteus/pull/5) 2014-04-25 13:31:39)
+
+Falsely detecting changes to CHANGELOG & VERSION
+
+### Bug fixes
+
+* Fixed a bug where Proteus was not diff-ing from the right branch to check the last upstream commit changes ([CP-1416](https://tools.mobcastdev.com/jira/browse/CP-1416))
+* Changed the exit code from `1` to `3` when an exception is captured
+
 ## 0.1.1 ([#4](https://git.mobcastdev.com/Deployment/proteus/pull/4) 2014-04-24 16:03:50)
 
 Allow underscores in repo names
