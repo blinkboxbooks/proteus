@@ -33,7 +33,7 @@ module Proteus
     def retrieve_info
       # PR info
       @details = retrieve_from_github(URI.parse("https://git.mobcastdev.com/api/v3/repos/%s/%s/pulls/%i" % [@owner, @repo, @pr[:id]]))
-      
+
       @pr[:issue_url] = File.join(@details["_links"]["issue"]["href"], "comments")
       @pr[:body] = @details["body"].gsub(/^(\#{1,2})\ /,"##\\1 ")
       @pr[:timestamp] = Time.parse(@details["created_at"])
@@ -104,7 +104,7 @@ ERROR
 
       log_parts = changelog.split("## ")
       log_parts.insert(1,"#{@new_version} ([##{pr[:id]}](https://git.mobcastdev.com/#{@owner}/#{@repo}/pull/#{@pr[:id]}) #{@pr[:timestamp].strftime("%Y-%m-%d %H:%M:%S")})\n\n#{@pr[:title]}\n\n#{@pr[:body]}\n\n")
-      
+
       open("VERSION","w") do |f|
         f.write @new_version
       end
@@ -144,14 +144,12 @@ ERROR
     end
 
     def banned_files_in_diff
-      # The most recent commit should be the merge between the last pull request commit and the upstream master
-      # as we can't be 100% sure what order the parents will be in, we need to take the last two commits and compare.
+      # The most recent commit should be the merge between the last pull request commit and the upstream master.
+      # We assume that the first parent is the last upstream commit.
       parents = `git log --pretty=%P -1`.split(" ")
-      last_pr_commit = `git log --pretty=%H -2`.split("\n").last
       raise "The most recent commit is not a merge, the build process is not behaving as expected" unless parents.length == 2
-      last_upstream_commit = parents - [last_pr_commit]
-      raise "Could not identify the last upstream commit from the git log." unless last_upstream_commit.length == 1
-      files = `git diff #{last_upstream_commit.first} --name-only`.split("\n")
+      last_upstream_commit = parents.first
+      files = `git diff #{last_upstream_commit} --name-only`.split("\n")
       files.grep(/^(CHANGELOG\.md|VERSION)$/)
     end
 
