@@ -63,7 +63,7 @@ module Proteus
         @version_parts[0] += 1
         @version_parts[1] = 0
         @version_parts[2] = 0
-      when %r{breaking change|new feature}i || 
+      when %r{breaking change|new feature}i
         @change_type_text = "Minor version change detected."
         @version_parts[1] += 1
         @version_parts[2] = 0
