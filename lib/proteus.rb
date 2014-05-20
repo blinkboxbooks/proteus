@@ -66,18 +66,18 @@ module Proteus
         @change_type_text = "Minor version change detected."
         @version_parts[1] += 1
         @version_parts[2] = 0
-      when %r{bug\ ?fix|patch}i
+      when %r{bug\ ?fix|patch|improvement}i
         @change_type_text = "Patch version change detected."
         @version_parts[2] += 1
       else
         error_text = <<-ERROR
 The pull request description didn't contain any keywords indicating what kind of change this is. Please include a keyword from this list to allow this pull request to be accepted:
 
-| Change type | Usable keywords                  |
-|-------------|----------------------------------|
-| Patch       | bug fix, bugfix, bugfixes, patch |
-| Minor       | new feature                      |
-| Major       | breaking change                  |
+| Change type | Usable keywords                               |
+|-------------|-----------------------------------------------|
+| Patch       | bug fix, bugfix, bugfixes, patch, improvement |
+| Minor       | new feature                                   |
+| Major       | breaking change                               |
 ERROR
 
         post_to_pull_request(error_text + fail) unless @update_changelog
