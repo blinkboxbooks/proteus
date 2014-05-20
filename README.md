@@ -15,6 +15,9 @@ Proteus reads the pull request body text and looks for any of the following word
 | bugfix          | Patch     | 0.0.1     |
 | bug fix         | Patch     | 0.0.1     |
 | patch           | Patch     | 0.0.1     |
+| improvement     | Patch     | 0.0.1     |
+
+However, if the current major version is 0 (i.e. this is a version 0.x.y product) then the major version will never be bumped as breaking changes are expected and permitted while in a v0 (unstable) product.
 
 ### Writing pull request text
 

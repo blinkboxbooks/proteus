@@ -18,7 +18,7 @@ begin
   pr = Proteus::Build.new(owner, repo, ARGV[1])
 
   pr.retrieve_info
-  pr.validate_repo
+  pr.validate_repo if pr.comment_only?
   pr.calculate_new_version
 
   if pr.comment_only?
