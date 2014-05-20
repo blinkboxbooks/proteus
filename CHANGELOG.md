@@ -1,5 +1,13 @@
 # Change log
 
+## 0.2.0 ([#7](https://git.mobcastdev.com/Deployment/proteus/pull/7) 2014-05-20 13:50:10)
+
+Allow breaking changes in v0
+
+#### New features
+
+- When the current version is `0.y.z` then text indicating incompatible changes increments the `minor` rather than `major` version, as incompatible changes are expected in v0 products and you can make incompatible changes in v0 according to the semantic versioning policy.
+
 ## 0.1.3 ([#6](https://git.mobcastdev.com/Deployment/proteus/pull/6) 2014-05-20 11:36:52)
 
 Allow the improvement keyword
