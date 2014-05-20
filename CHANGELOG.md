@@ -1,5 +1,15 @@
 # Change log
 
+## 0.1.3 ([#6](https://git.mobcastdev.com/Deployment/proteus/pull/6) 2014-05-20 11:36:52)
+
+Allow the improvement keyword
+
+### Improvement
+
+- Patch to add the "improvement" keyword, it will be recognised as a PATCH version bump.
+
+
+
 ## 0.1.2 ([#5](https://git.mobcastdev.com/Deployment/proteus/pull/5) 2014-04-25 13:31:39)
 
 Falsely detecting changes to CHANGELOG & VERSION
