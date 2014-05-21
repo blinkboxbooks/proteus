@@ -45,7 +45,7 @@ module Proteus
     end
 
     def validate_repo
-      if pr.comment_only?
+      if comment_only?
         unless banned_files_in_diff.empty?
           error_text = "Please do not include any changes to CHANGELOG.md or VERSION in your pull requests."
           post_to_pull_request(error_text + fail)
