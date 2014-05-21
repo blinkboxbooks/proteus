@@ -45,10 +45,12 @@ module Proteus
     end
 
     def validate_repo
-      unless banned_files_in_diff.empty?
-        error_text = "Please do not include any changes to CHANGELOG.md or VERSION in your pull requests."
-        post_to_pull_request(error_text + fail)
-        raise error_text
+      if pr.comment_only?
+        unless banned_files_in_diff.empty?
+          error_text = "Please do not include any changes to CHANGELOG.md or VERSION in your pull requests."
+          post_to_pull_request(error_text + fail)
+          raise error_text
+        end
       end
 
       @version_parts = Gem::Version.new(File.read("VERSION").strip).segments rescue [0,0,0]
@@ -151,7 +153,10 @@ ERROR
       raise "The most recent commit is not a merge, the build process is not behaving as expected" unless parents.length == 2
       last_upstream_commit = parents.first
       files = `git diff #{last_upstream_commit} --name-only`.split("\n")
-      files.grep(/^(CHANGELOG\.md|VERSION)$/)
+      banned_files = files.grep(/^(CHANGELOG\.md|VERSION)$/)
+      # Allow pull requests that contain *just* CHANGELOG.md and/or VERSION
+      return [] if (files - banned_files).empty?
+      banned_files
     end
 
     def retrieve_from_github(uri)
