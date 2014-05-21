@@ -1,5 +1,17 @@
 # Change log
 
+## 0.2.2 ([#9](https://git.mobcastdev.com/Deployment/proteus/pull/9) 2014-05-21 12:14:20)
+
+JP, you're a tool
+
+### Bugfix
+
+- JP's a massive tool.
+
+With respect,
+
+JP
+
 ## 0.2.1 ([#8](https://git.mobcastdev.com/Deployment/proteus/pull/8) 2014-05-21 10:20:32)
 
 Only check for banned files on PR
