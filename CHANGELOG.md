@@ -1,5 +1,14 @@
 # Change log
 
+## 0.2.1 ([#8](https://git.mobcastdev.com/Deployment/proteus/pull/8) 2014-05-21 10:20:32)
+
+Only check for banned files on PR
+
+### Bugfixes
+
+- Correctly only check for banned files on PR runs. (Previous implementation didn't set `@version` which broke later steps)
+- Allow pull requests which *only* change `VERSION` and `CHANGELOG.md`
+
 ## 0.2.0 ([#7](https://git.mobcastdev.com/Deployment/proteus/pull/7) 2014-05-20 13:50:10)
 
 Allow breaking changes in v0
