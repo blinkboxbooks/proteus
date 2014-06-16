@@ -59,17 +59,17 @@ module Proteus
     def calculate_new_version
       # Guess level of change from PR description
       # Note that breaking changes do not increment major version in 0.y.z products
-      case @pr[:body]
-      when %r{breaking change}i && @version_parts[0] > 0
+      case 
+      when @pr[:body] =~ %r{breaking change}i && @version_parts[0] > 0
         @change_type_text = "Major version change detected."
         @version_parts[0] += 1
         @version_parts[1] = 0
         @version_parts[2] = 0
-      when %r{breaking change|new feature}i
+      when @pr[:body] =~ %r{breaking change|new feature}i
         @change_type_text = "Minor version change detected."
         @version_parts[1] += 1
         @version_parts[2] = 0
-      when %r{bug\ ?fix|patch|improvement}i
+      when @pr[:body] =~ %r{bug\ ?fix|patch|improvement}i
         @change_type_text = "Patch version change detected."
         @version_parts[2] += 1
       else
