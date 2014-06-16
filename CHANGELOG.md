@@ -1,5 +1,13 @@
 # Change log
 
+## 0.3.0 ([#10](https://git.mobcastdev.com/Deployment/proteus/pull/10) 2014-06-16 15:43:24)
+
+Case statement fail!
+
+### Bug fix
+
+- Fixed an issue with `0.y.z` breaking changes where they would never be detected.
+
 ## 0.2.2 ([#9](https://git.mobcastdev.com/Deployment/proteus/pull/9) 2014-05-21 12:14:20)
 
 JP, you're a tool
