@@ -2,7 +2,7 @@
 $LOAD_PATH << File.join(__dir__, "../lib")
 require "proteus"
 
-puts "Proteus v#{File.read('../VERSION').strip}"
+puts "Proteus v#{Proteus::VERSION}"
 
 owner, repo = $1, $2 if ARGV[0] =~ %r{^([\w-]+)/([\w-]+)$}
 
