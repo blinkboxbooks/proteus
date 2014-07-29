@@ -1,5 +1,13 @@
 # Change log
 
+## 0.3.2 ([#14](https://git.mobcastdev.com/Deployment/proteus/pull/14) 2014-07-29 12:13:37)
+
+Actually collect version
+
+### Improvements
+
+- *Actually* collect the version number from proteus, rather than pretending to, and cocking it all up.
+
 ## 0.3.1 ([#12](https://git.mobcastdev.com/Deployment/proteus/pull/12) 2014-07-29 11:56:22)
 
 Only alter changelog and version when merging to master
