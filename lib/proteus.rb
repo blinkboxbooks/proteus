@@ -200,10 +200,7 @@ ERROR
       http://media1.giphy.com/media/gLrWjmW6XljZC/giphy.gif
       http://media.giphy.com/media/1014RBn4HVSTK/giphy.gif
     }
-
-    EXPERIMENTAL_GIFS = %w{
-
-    }
+    
     def fail
       "\n\n![#FAIL](#{FAIL_GIFS.sample})"
     end
