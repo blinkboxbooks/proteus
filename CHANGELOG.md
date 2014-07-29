@@ -1,5 +1,13 @@
 # Change log
 
+## 0.3.1 ([#12](https://git.mobcastdev.com/Deployment/proteus/pull/12) 2014-07-29 11:56:22)
+
+Only alter changelog and version when merging to master
+
+### Improvements
+
+- Ensure PRs to non-master don't commit changelog and version changes.
+
 ## 0.3.0 ([#10](https://git.mobcastdev.com/Deployment/proteus/pull/10) 2014-06-16 15:43:24)
 
 Case statement fail!
