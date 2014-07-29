@@ -23,9 +23,11 @@ begin
 
   if pr.comment_only?
     pr.comment_with_bump_type
-  else
+  elsif pr.merge_to_master?
     pr.update_changelog
     pr.commit_changes
+  else
+    # Merging into a non-master branch, no need to do anything
   end
 rescue => e
   $stderr.puts e.message

@@ -38,6 +38,11 @@ module Proteus
       @pr[:body] = @details["body"].gsub(/^(\#{1,2})\ /,"##\\1 ")
       @pr[:timestamp] = Time.parse(@details["created_at"])
       @pr[:title] = @details["title"]
+      @pr[:merge_to] = @details["base"]["ref"]
+    end
+
+    def merge_to_master?
+      @pr[:merge_to] == "master"
     end
 
     def comment_only?
@@ -116,6 +121,7 @@ ERROR
       end
     end
 
+    # This assumes you are working against master
     def commit_changes
       @log.info "Committing VERSION and CHANGELOG.md back to Github, tagging with \"v#{@new_version}\""
       `git add VERSION CHANGELOG.md && git commit -m "Automated post-pull-request changelog and version commit" && git tag v#{@new_version} && git push origin master --tags`
@@ -193,6 +199,10 @@ ERROR
       http://media1.giphy.com/media/YzZ29cRg4hkrK/giphy.gif
       http://media1.giphy.com/media/gLrWjmW6XljZC/giphy.gif
       http://media.giphy.com/media/1014RBn4HVSTK/giphy.gif
+    }
+
+    EXPERIMENTAL_GIFS = %w{
+
     }
     def fail
       "\n\n![#FAIL](#{FAIL_GIFS.sample})"
