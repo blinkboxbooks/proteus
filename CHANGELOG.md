@@ -1,5 +1,13 @@
 # Change log
 
+## 0.3.3 ([#15](https://git.mobcastdev.com/Deployment/proteus/pull/15) 2014-08-04 11:13:21)
+
+Grab a FAIL gif at random using the giphy API
+
+### Patch
+
+Attempt to grab a fresh, new and funny fail gif from Giphy, instead of cycling the same old images over and over
+
 ## 0.3.2 ([#14](https://git.mobcastdev.com/Deployment/proteus/pull/14) 2014-07-29 12:13:37)
 
 Actually collect version
