@@ -204,7 +204,15 @@ ERROR
     }
 
     def fail
-      "\n\n![#FAIL](#{FAIL_GIFS.sample})"
+      begin
+        j = Net::HTTP.get(URI("http://api.giphy.com/v1/gifs/search?q=fail&api_key=dc6zaTOxFJmzC&offset=#{rand(1..250)}"))
+        fail_json = JSON.parse(j)
+
+        fail_gif = fail_json["data"].sample['images']['original']['url']
+      rescue
+        fail_gif = FAIL_GIFS.sample
+      end
+      "\n\n![#FAIL](#{fail_gif})"
     end
   end
 end
