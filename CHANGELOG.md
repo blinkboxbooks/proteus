@@ -1,5 +1,13 @@
 # Change log
 
+## 0.3.4 ([#16](https://git.mobcastdev.com/Deployment/proteus/pull/16) 2014-08-14 12:24:57)
+
+Allow dot and underscores in repo names
+
+### Bug fix
+
+- git repos can have dots and underscores, we need to ensure these are included!
+
 ## 0.3.3 ([#15](https://git.mobcastdev.com/Deployment/proteus/pull/15) 2014-08-04 11:13:21)
 
 Grab a FAIL gif at random using the giphy API
