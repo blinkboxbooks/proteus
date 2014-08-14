@@ -4,7 +4,7 @@ require "proteus"
 
 puts "Proteus v#{Proteus::VERSION}"
 
-owner, repo = $1, $2 if ARGV[0] =~ %r{^([\w-]+)/([\w-]+)$}
+owner, repo = $1, $2 if ARGV[0] =~ %r{^([\w-._]+)/([\w-._]+)$}
 
 unless owner && repo
   $stderr.puts "Usage: proteus owner/repo [PR-number]"
