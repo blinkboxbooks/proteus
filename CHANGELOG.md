@@ -1,5 +1,13 @@
 # Change log
 
+## 0.3.5 ([#17](https://git.mobcastdev.com/Deployment/proteus/pull/17) 2014-08-14 12:34:11)
+
+Real regex
+
+### Bug fix
+
+- I'm a complete idiot and forgot to escape the hyphen.
+
 ## 0.3.4 ([#16](https://git.mobcastdev.com/Deployment/proteus/pull/16) 2014-08-14 12:24:57)
 
 Allow dot and underscores in repo names
