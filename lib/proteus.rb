@@ -7,7 +7,7 @@ require "uri"
 
 module Proteus
   VERSION = File.read(File.join(__dir__, '../VERSION')).strip
-  
+
   class Build
     attr_reader :pr
 
@@ -66,7 +66,7 @@ module Proteus
     def calculate_new_version
       # Guess level of change from PR description
       # Note that breaking changes do not increment major version in 0.y.z products
-      case 
+      case
       when @pr[:body] =~ %r{breaking change}i && @version_parts[0] > 0
         @change_type_text = "Major version change detected."
         @version_parts[0] += 1
@@ -113,7 +113,7 @@ ERROR
       end
 
       log_parts = changelog.split("## ")
-      log_parts.insert(1,"#{@new_version} ([##{pr[:id]}](https://git.mobcastdev.com/#{@owner}/#{@repo}/pull/#{@pr[:id]}) #{@pr[:timestamp].strftime("%Y-%m-%d %H:%M:%S")})\n\n#{@pr[:title]}\n\n#{@pr[:body]}\n\n")
+      log_parts.insert(1,"#{@new_version} ([##{pr[:id]}](https://git.mobcastdev.com/#{@owner}/#{@repo}/pull/#{@pr[:id]}) #{Time.now.strftime("%Y-%m-%d %H:%M:%S")})\n\n#{@pr[:title]}\n\n#{@pr[:body]}\n\n")
 
       open("VERSION","w") do |f|
         f.write @new_version
