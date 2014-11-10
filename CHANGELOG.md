@@ -1,5 +1,13 @@
 # Change log
 
+## 0.3.6 ([#18](https://git.mobcastdev.com/Deployment/proteus/pull/18) 2014-11-10 12:49:23)
+
+Use the time from when things were merged in
+
+Patch
+
+The changelog.md will mention the time things were merged in by Proteus and that version came to be; not the timestamp of when the PR was filed. If you want that, follow the link to the PR itself.
+
 ## 0.3.5 ([#17](https://git.mobcastdev.com/Deployment/proteus/pull/17) 2014-08-14 12:34:11)
 
 Real regex
