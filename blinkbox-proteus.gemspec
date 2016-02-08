@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["jphastings@blinkbox.com"]
   spec.summary       = %q{Build tool for automatic version management with github}
   spec.description   = %q{Build tool for automatic version management with github}
-  spec.homepage      = "https://git.mobcastdev.com/Deployment/proteus#readme"
+  spec.homepage      = "https://github.com/blinkboxbooks/proteus#readme"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

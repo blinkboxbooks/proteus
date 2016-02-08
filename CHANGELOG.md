@@ -1,5 +1,9 @@
 # Change log
 
+## 0.3.7
+
+Open source time.
+
 ## 0.3.6 ([#18](https://git.mobcastdev.com/Deployment/proteus/pull/18) 2014-11-10 12:49:23)
 
 Use the time from when things were merged in

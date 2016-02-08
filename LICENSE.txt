@@ -1,4 +1,4 @@
-Copyright (c) 2014 JP Hastings-Spital
+Copyright (c) 2015 blinkbox Books Ltd.
 
 MIT License
 
